@@ -1,5 +1,8 @@
 # AutoQQlogin
 
+
+
+
 自动启动并登陆QQ的小工具，我怎么这么懒23333
 
 把QQ的快捷方式名称改成“QQ”，然后把路径加入到环境变量Path里。
@@ -10,3 +13,7 @@
 
 
   [1]: https://raw.githubusercontent.com/pokerfaceSad/AutoQQlogin/master/%E7%BB%93%E6%9E%84%E5%9B%BE.png
+
+## 更新 2018.4.20
+
+修复了QQ更新后修改了进程名称，无法正常检测登录窗口是否正常启动的问题
