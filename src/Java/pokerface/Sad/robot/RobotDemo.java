@@ -67,20 +67,25 @@ private Robot robot = null;
 	InterruptedException, FileNotFoundException {
 
 		BufferedReader br = null;
-		Runtime.getRuntime().exec("cmd /k tasklist | find \"QQApp\">out.txt");
+		Runtime.getRuntime().exec("cmd /k tasklist | find \"QQ.exe\">out.txt");
 		Thread.currentThread().sleep(500);
-		br = new BufferedReader(new InputStreamReader(new FileInputStream("out.txt")));
+		File file = new File("out.txt");
+		br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+		br.mark((int)file.length());
 		if(br.readLine()==null) 
 		{
 			Runtime.getRuntime().exec("cmd /c start QQ");
-			while(br.readLine()==null)
+			while(br.readLine()==null || br.readLine()==null) //若是任务列表中有两个QQ.exe说明QQ登录窗口已正常启动
 			{
+				br.close();
 				System.out.println("Wait For QQ Strat...");
 				Thread.currentThread().sleep(500);
-				Runtime.getRuntime().exec("cmd /k tasklist | find \"QQApp\">out.txt");
+				Runtime.getRuntime().exec("cmd /k tasklist | find \"QQ.exe\">out.txt");
+				br = new BufferedReader(new InputStreamReader(new FileInputStream(file))); //重新创建BUfferedReader对象从头开始读取out.txt文件
 			}
 		}
 		System.out.println("QQ Strat Successfully...");
+		//file.delete();
 		Thread.currentThread().sleep(1000);
 		br.close();
 		CLibrary.INSTANCE.TopSetQQ(); //JNA调用DLL置顶QQ

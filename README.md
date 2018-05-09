@@ -13,7 +13,9 @@
 
 
   [1]: https://raw.githubusercontent.com/pokerfaceSad/AutoQQlogin/master/%E7%BB%93%E6%9E%84%E5%9B%BE.png
+## 更新 2018.5.9
+修复了无法正常检测登录窗口启动的BUG
 
 ## 更新 2018.4.20
 
-修复了QQ更新后修改了进程名称，无法正常检测登录窗口是否正常启动的问题
+~~修复了QQ更新后修改了进程名称，无法正常检测登录窗口是否正常启动的问题~~(一次失败的更新)
